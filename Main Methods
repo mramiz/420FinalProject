@@ -17,7 +17,8 @@ public class Main
     int key;
     private String error = "You entered non-textual input >:(";
     /**
-     * this is the atbash cipher: a Caesar shift that works with no key because it always moves 13 characters ahead. 
+     * This is the atbash cipher: a Caesar shift that works with no key because it always moves 13 characters ahead. 
+     * Same to encipher and decipher. 
      */
     public String atbash(String str, String ciphertext)
     {
