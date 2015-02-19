@@ -1,0 +1,73 @@
+import java.util.ArrayList;
+import java.lang.StringBuilder;
+/**
+ * Write a description of class Main here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Main
+{
+    // instance variables - replace the example below with your own
+    private String plaintext, str;
+    private String ciphertext = "";
+    StringBuilder sb1 = new StringBuilder(ciphertext);
+    int b;
+    char c;
+    int key;
+    private String error = "You entered non-textual input >:(";
+    /**
+     * this is the atbash cipher: a Caesar shift that works with no key because it always moves 13 characters ahead. 
+     */
+    public String atbash(String str, String ciphertext)
+    {
+        plaintext = str;
+        ArrayList ab1 = new ArrayList(); 
+        ab1.add('a'); 
+        ab1.add('b'); 
+        ab1.add('c'); 
+        ab1.add('d');
+        ab1.add('e');
+        ab1.add('f');
+        ab1.add('g');
+        ab1.add('h');
+        ab1.add('i');
+        ab1.add('j');
+        ab1.add('k');
+        ab1.add('l');
+        ab1.add('m'); 
+        ArrayList ab2 = new ArrayList(); 
+        ab1.add('n'); 
+        ab1.add('o'); 
+        ab1.add('p'); 
+        ab1.add('q');
+        ab1.add('r');
+        ab1.add('s');
+        ab1.add('t');
+        ab1.add('u');
+        ab1.add('v');
+        ab1.add('w');
+        ab1.add('x');
+        ab1.add('y');
+        ab1.add('z'); 
+        for (int i = 0; i< str.length(); i++)
+        {
+            if(ab1.contains(str.charAt(i)))
+            {
+               c = str.charAt(i);
+               b = ab1.indexOf(c);
+               sb1.append(ab2.get(b));
+              }
+            else 
+            if(ab2.contains(str.charAt(i))){
+               c = str.charAt(i);
+               b = ab1.indexOf(c);
+               sb1.append(ab1.get(b));
+            }
+            else 
+            {
+             return error;
+             }
+        }
+        return ciphertext;
+   }
