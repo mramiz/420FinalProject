@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 import java.lang.StringBuilder;
 /**
- * Write a description of class Main here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Michelle Ramiz and Robert Durst 
+ * Due Thursday Feb 26
  */
 public class Main
 {
