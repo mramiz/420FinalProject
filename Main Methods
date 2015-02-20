@@ -72,3 +72,40 @@ public class Main
         }
         return ciphertext;
    }
+   public String atbash(String str)
+   {//this is the atbash cipher, which substitutes the first thirteen letters and the last thirteen letters.
+        ArrayList ab1 = new ArrayList(); 
+        ab1.add('a'); 
+        ab1.add('b'); 
+        ab1.add('c'); 
+        ab1.add('d');
+        ab1.add('e');
+        ab1.add('f');
+        ab1.add('g');
+        ab1.add('h');
+        ab1.add('i');
+        ab1.add('j');
+        ab1.add('k');
+        ab1.add('l');
+        ab1.add('m'); 
+        ab1.add('n'); 
+        ab1.add('o'); 
+        ab1.add('p'); 
+        ab1.add('q');
+        ab1.add('r');
+        ab1.add('s');
+        ab1.add('t');
+        ab1.add('u');
+        ab1.add('v');
+        ab1.add('w');
+        ab1.add('x');
+        ab1.add('y');
+        ab1.add('z'); 
+        for (int i = 0; i< str.length(); i++)
+        {
+            c = str.charAt(i);
+            b = 25 - ab1.getIndexOf(c);
+            sb1.append(ab1.get(b));
+        }
+        return ciphertext;
+    }
