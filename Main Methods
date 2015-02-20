@@ -38,19 +38,19 @@ public class Main
         ab1.add('l');
         ab1.add('m'); 
         ArrayList ab2 = new ArrayList(); 
-        ab1.add('n'); 
-        ab1.add('o'); 
-        ab1.add('p'); 
-        ab1.add('q');
-        ab1.add('r');
-        ab1.add('s');
-        ab1.add('t');
-        ab1.add('u');
-        ab1.add('v');
-        ab1.add('w');
-        ab1.add('x');
-        ab1.add('y');
-        ab1.add('z'); 
+        ab2.add('n'); 
+        ab2.add('o'); 
+        ab2.add('p'); 
+        ab2.add('q');
+        ab2.add('r');
+        ab2.add('s');
+        ab2.add('t');
+        ab2.add('u');
+        ab2.add('v');
+        ab2.add('w');
+        ab2.add('x');
+        ab2.add('y');
+        ab2.add('z'); 
         for (int i = 0; i< str.length(); i++)
         {
             if(ab1.contains(str.charAt(i)))
