@@ -49,6 +49,9 @@ public class Main
         ab2.add('x');
         ab2.add('y');
         ab2.add('z'); 
+        if (str.charAt(i) == '!' || str.charAt(i)==' '|| str.charAt(i)== '.'|| str.charAt(i)== ',' ||str.charAt(i) == '?' ||str.charAt(i) ==  ';' ||str.charAt(i)== ':')
+                i++;
+        else        
         for (int i = 0; i< str.length(); i++)
         {
             if(ab1.contains(str.charAt(i)))
@@ -99,6 +102,9 @@ public class Main
         ab1.add('x');
         ab1.add('y');
         ab1.add('z'); 
+        if (str.charAt(i) == '!' || str.charAt(i)==' '|| str.charAt(i)== '.'|| str.charAt(i)== ',' ||str.charAt(i) == '?' ||str.charAt(i) ==  ';' ||str.charAt(i)== ':')
+                i++;
+        else
         for (int i = 0; i< str.length(); i++)
         {
             c = str.charAt(i);
@@ -137,6 +143,9 @@ public class Main
         ab1.add('x');
         ab1.add('y');
         ab1.add('z');      
+        if (str.charAt(i) == '!' || str.charAt(i)==' '|| str.charAt(i)== '.'|| str.charAt(i)== ',' ||str.charAt(i) == '?' ||str.charAt(i) ==  ';' ||str.charAt(i)== ':')
+                i++;
+        else
         for (int i = 0; i< str.length(); i++)
         {
             if (key > 25)
