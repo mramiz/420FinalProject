@@ -22,6 +22,10 @@ public class GUI extends Main2 implements ActionListener
   private Enigma panel1;
   JPanel outFieldPane= new JPanel();
   JPanel InputPanel = new JPanel();
+  boolean atbash;
+  boolean caesar;
+  boolean vigenere;
+  boolean rot13;
   JButton submitButton = new JButton("Submit");
   boolean buttonRemove;
   JLabel KeyLabel = new JLabel("Key:", SwingConstants.RIGHT);
@@ -30,7 +34,7 @@ public class GUI extends Main2 implements ActionListener
    {
      buttonRemove = false;
      //Create the FrameforChoice
-     FrameforChoice.setSize(1250,2000);
+     FrameforChoice.setSize(125,200);
      FrameforChoice.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
      FrameforChoice.setLayout(new FlowLayout());
 
@@ -94,12 +98,7 @@ public class GUI extends Main2 implements ActionListener
                 {
                   FrameforChoice.setVisible(false);
                   FrameforInput.setVisible(true);
-                  if(e.getActionCommand().equals("Submit"))
-                    {
-                     plaintext = Input.getText();
-                     ciphertext = atbash(plaintext);
-                     Output.setText(ciphertext);          
-                     } 
+                  atbash = true;
                 }
         else 
         if(e.getActionCommand().equals("Caesar Shift"))
@@ -111,26 +110,14 @@ public class GUI extends Main2 implements ActionListener
                    InputPanel.remove(submitButton);
                    InputPanel.add(submitButton);
                    FrameforInput.setVisible(true);
-                   if(e.getActionCommand().equals("Submit"))
-                    {
-                     plaintext = Input.getText();
-                     text = Input2.getText();
-                     key = Integer.parseInt(text);
-                     ciphertext = caesar(plaintext, key);
-                     Output.setText(ciphertext);          
-                     }
+                   caesar = true;
                 }
         else
         if(e.getActionCommand().equals("ROT13"))
                 {
                     FrameforChoice.setVisible(false);
                     FrameforInput.setVisible(true);
-                    if(e.getActionCommand().equals("Submit"))
-                    {
-                     plaintext = Input.getText();
-                     ciphertext = ROT13(plaintext);
-                     Output.setText(ciphertext);
-                    }
+                    rot13 = true;
                 }
         else
         if(e.getActionCommand().equals("Vigenere"))
@@ -142,14 +129,7 @@ public class GUI extends Main2 implements ActionListener
                     InputPanel.remove(submitButton);
                     InputPanel.add(submitButton);
                     FrameforInput.setVisible(true);
-                    if(e.getActionCommand().equals("Submit"))
-                    {
-                     plaintext = Input.getText();
-                     text = Input2.getText();
-                     Key = text;
-                     ciphertext = vigenere(plaintext, Key);
-                     Output.setText(ciphertext);
-                    }
+                    vigenere = true;
                 }
         else 
         if(e.getActionCommand().equals("Return"))
@@ -164,7 +144,39 @@ public class GUI extends Main2 implements ActionListener
                             buttonRemove = false;
                         }
                     }
-     }
+        if (atbash == true)
+            if(e.getActionCommand().equals("Submit"))
+                    {
+                     plaintext = Input.getText();
+                     ciphertext = atbash(plaintext);
+                     Output.setText(ciphertext);          
+                     } 
+        if (caesar == true)
+           if(e.getActionCommand().equals("Submit"))
+                    {
+                     plaintext = Input.getText();
+                     text = Input2.getText();
+                     key = Integer.parseInt(text);
+                     ciphertext = caesar(plaintext, key);
+                     Output.setText(ciphertext);          
+                     }
+        if (rot13 == true)
+           if(e.getActionCommand().equals("Submit"))
+                    {
+                     plaintext = Input.getText();
+                     ciphertext = ROT13(plaintext);
+                     Output.setText(ciphertext);
+                    }
+        if (vigenere == true)
+           if(e.getActionCommand().equals("Submit"))
+                    {
+                     plaintext = Input.getText();
+                     text = Input2.getText();
+                     Key = text;
+                     ciphertext = vigenere(plaintext, Key);
+                     Output.setText(ciphertext);
+                    }
+     }    
   public static void main(String[] args) 
      {
         GUI GUI = new GUI();
