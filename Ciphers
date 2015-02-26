@@ -270,7 +270,7 @@ public class Main2 {
                     }
                    }
                  }
-              ciphertext += ab3.get(ab2.indexOf(str.charAt(i))); 
+              ciphertext += ab2.get(ab3.indexOf(str.charAt(i))); 
          }  
        return ciphertext;    
     }     
