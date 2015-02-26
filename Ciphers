@@ -1,0 +1,277 @@
+import java.util.ArrayList;
+public class Main2 {
+
+  static int key;
+  public static String plaintext, str;
+  static String ciphertext = "";
+  static int b;
+  static char c;
+  String Key; 
+   public static String atbash(String str)
+   /* This cipher is of ancient Hebrew origin where each letter is switched for one that is opposite it in the alphabet.
+    * Ex: A-->Z, B-->Y, C-->X, etc.
+    */
+       
+   {
+        ArrayList ab1 = new ArrayList(); 
+        str.toLowerCase();
+        ab1.add('a'); 
+        ab1.add('b'); 
+        ab1.add('c'); 
+        ab1.add('d');
+        ab1.add('e');
+        ab1.add('f');
+        ab1.add('g');
+        ab1.add('h');
+        ab1.add('i');
+        ab1.add('j');
+        ab1.add('k');
+        ab1.add('l');
+        ab1.add('m'); 
+        ab1.add('n'); 
+        ab1.add('o'); 
+        ab1.add('p'); 
+        ab1.add('q');
+        ab1.add('r');
+        ab1.add('s');
+        ab1.add('t');
+        ab1.add('u');
+        ab1.add('v');
+        ab1.add('w');
+        ab1.add('x');
+        ab1.add('y');
+        ab1.add('z'); 
+        System.out.println(ab1.size());
+        for (int i = 0; i< str.length(); i++)
+        {
+            if (str.charAt(i) == '!' || str.charAt(i)==' '|| str.charAt(i)== '.'|| str.charAt(i)== ',' ||str.charAt(i) == '?' ||str.charAt(i) ==  ';' ||str.charAt(i)== ':')
+                i++;
+            else 
+            {
+              c = str.charAt(i);
+              b = 25 - ab1.indexOf(c);//index goes from 0 to 25; 25 minus index of given char gives it's opposite pair
+              ciphertext += ab1.get(b);
+          }
+        }
+        return ciphertext;
+        }
+   public static String caesar(String str, int key)
+    /*
+     * This is the Caesar shift, made famous by Julius Caesar. 
+     * Given a numeric key, the alphabet is shifted by that number. 
+     * Ex: key = 3. A becomes E, B becomes F and so on until Z becomes D.
+     */
+   
+   {
+        ArrayList ab1 = new ArrayList(); 
+        str.toLowerCase();
+        ab1.add('a'); 
+        ab1.add('b'); 
+        ab1.add('c'); 
+        ab1.add('d');
+        ab1.add('e');
+        ab1.add('f');
+        ab1.add('g');
+        ab1.add('h');
+        ab1.add('i');
+        ab1.add('j');
+        ab1.add('k');
+        ab1.add('l');
+        ab1.add('m'); 
+        ab1.add('n'); 
+        ab1.add('o'); 
+        ab1.add('p'); 
+        ab1.add('q');
+        ab1.add('r');
+        ab1.add('s');
+        ab1.add('t');
+        ab1.add('u');
+        ab1.add('v');
+        ab1.add('w');
+        ab1.add('x');
+        ab1.add('y');
+        ab1.add('z');      
+        for (int i = 0; i< str.length(); i++)
+        {
+            if (str.charAt(i) == '!' || str.charAt(i)==' '|| str.charAt(i)== '.'|| str.charAt(i)== ',' ||str.charAt(i) == '?' ||str.charAt(i) ==  ';' ||str.charAt(i)== ':')
+                i++;
+            else 
+            if (key > 25)
+            {
+                return ("Please enter a smaller key.");
+            }
+            else 
+            {
+               c = str.charAt(i);
+               b = key + str.indexOf(c);
+                    if (key + b <= 25)
+                       ciphertext += ab1.get(b);
+                    else 
+                    {
+                        b = (key + b)-25;
+                        ciphertext += ab1.get(b);
+                    }   
+            }
+        }
+        return ciphertext;
+    }
+    public static String ROT13(String str)
+     /*This cipher is like a Caesar shift with a standard shift of 13. 
+      */    
+    {
+        plaintext = str;
+        str.toLowerCase();
+        ArrayList ab1 = new ArrayList(); 
+        ab1.add('a'); 
+        ab1.add('b'); 
+        ab1.add('c'); 
+        ab1.add('d');
+        ab1.add('e');
+        ab1.add('f');
+        ab1.add('g');
+        ab1.add('h');
+        ab1.add('i');
+        ab1.add('j');
+        ab1.add('k');
+        ab1.add('l');
+        ab1.add('m'); 
+        ArrayList ab2 = new ArrayList(); 
+        ab2.add('n'); 
+        ab2.add('o'); 
+        ab2.add('p'); 
+        ab2.add('q');
+        ab2.add('r');
+        ab2.add('s');
+        ab2.add('t');
+        ab2.add('u');
+        ab2.add('v');
+        ab2.add('w');
+        ab2.add('x');
+        ab2.add('y');
+        ab2.add('z'); 
+        for (int i = 0; i< str.length(); i++)
+        {
+            if (str.charAt(i) == '!' || str.charAt(i)==' '|| str.charAt(i)== '.'|| str.charAt(i)== ',' ||str.charAt(i) == '?' ||str.charAt(i) ==  ';' ||str.charAt(i)== ':')
+                i++;
+            else 
+            if(ab1.contains(str.charAt(i)))
+            {
+               c = str.charAt(i);
+               b = ab1.indexOf(c);
+               ciphertext += ab2.get(b);
+              }
+            else 
+            if(ab2.contains(str.charAt(i))){
+               c = str.charAt(i);
+               b = ab1.indexOf(c);
+               ciphertext += ab1.get(b);
+            }
+        }
+        return ciphertext;
+   }
+   public static String vigenere(String str, String Key)
+   /*
+    * A Vigenere Cipher was considered indecipherable for about 200 years. It is polyalphabetic and the best type of key (a string) is one as long as the plaintext.
+    * If it is not, then the key is repeated in length (excluding spaces and punctuation) to match in chars the text.
+    * Then, essentially a system of Caesar shifts is made; the plaintext letter is found in the shifted key alphabet, and it's index is applied to the shifted text input.
+    * Then the output is appended to the ciphertext.
+    */
+   
+   {
+       str.toLowerCase();
+       Key.toLowerCase();
+       String K = Key;
+       ArrayList ab1 = new ArrayList(); 
+        ab1.add('a'); 
+        ab1.add('b'); 
+        ab1.add('c'); 
+        ab1.add('d');
+        ab1.add('e');
+        ab1.add('f');
+        ab1.add('g');
+        ab1.add('h');
+        ab1.add('i');
+        ab1.add('j');
+        ab1.add('k');
+        ab1.add('l');
+        ab1.add('m'); 
+        ab1.add('n'); 
+        ab1.add('o'); 
+        ab1.add('p'); 
+        ab1.add('q');
+        ab1.add('r');
+        ab1.add('s');
+        ab1.add('t');
+        ab1.add('u');
+        ab1.add('v');
+        ab1.add('w');
+        ab1.add('x');
+        ab1.add('y');
+        ab1.add('z');
+        ArrayList ab2 = new ArrayList(); 
+        ArrayList ab3 = new ArrayList();
+        ArrayList k = new ArrayList();
+        for (int m = 0; m < Key.length(); m++)
+        {
+            k.add(Key.charAt(m)); 
+        }
+        int kk = k.size();
+        for (int d = 0; d < str.length(); d++)
+        {
+          if (str.charAt(d) == '!' || str.charAt(d)==' '|| str.charAt(d)== '.'|| str.charAt(d)== ',' ||str.charAt(d) == '?' ||str.charAt(d) ==  ';' ||str.charAt(d)== ':')
+                d++;
+          else{ 
+             if (d == k.size())
+             { 
+                int f = d - kk;
+                k.add(k.get(f));
+             }
+          }
+        }
+        for(int i = 0; i< k.size(); i++)//makes the key alphabet
+        {
+              b = ab1.indexOf(k.get(i));
+              for (int j = 0; j < 26; j++)
+              {     
+                if (b + j < 26)
+                {
+                    ab2.add(ab1.get((b + j)));
+                }
+                else
+                //if (b + j >= 26) 
+                   {
+                    for (int n = 0 ; n < b; n++)
+                      { ab2.add(ab1.get((n)));
+                      } 
+                    break;
+                    }
+                }//ab2 is now a shifted alphabet
+              
+              int p = ab1.indexOf(str.charAt(i));
+              for (int g = 0; g < 26; g++)
+                {
+                   if (str.charAt(i) == '!' || str.charAt(i)==' '|| str.charAt(i)== '.'|| str.charAt(i)== ',' ||str.charAt(i) == '?' ||str.charAt(i) ==  ';' ||str.charAt(i)== ':')
+                     i++;
+                   else 
+                      {
+                    if ((p + g) < 26)
+                    {
+                        ab3.add(ab1.get((p + g)));
+                      }
+                    else
+                    
+                    //if (p + g >= 26) 
+                    {
+                        for (int x = 0 ; x < p; x++)
+                        {
+                          ab3.add(ab1.get((x)));
+                        }
+                        break;
+                    }
+                   }
+                 }
+              ciphertext += ab3.get(ab2.indexOf(str.charAt(i))); 
+         }  
+       return ciphertext;    
+    }     
+}
