@@ -15,6 +15,7 @@ public class Main2 {
    {
         ciphertext = ("");
         ArrayList ab1 = new ArrayList(); 
+        plaintext = str;
         str.toLowerCase();
         ab1.add('a'); 
         ab1.add('b'); 
@@ -66,6 +67,7 @@ public class Main2 {
    {
         ciphertext = ("");
         ArrayList ab1 = new ArrayList(); 
+        plaintext = str;
         str.toLowerCase();
         ab1.add('a'); 
         ab1.add('b'); 
@@ -182,6 +184,7 @@ public class Main2 {
    
    {
        ciphertext = ("");
+       plaintext = str;
        str.toLowerCase();
        Key.toLowerCase();
        String K = Key;
