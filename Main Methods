@@ -103,16 +103,14 @@ public void actionPerformed(ActionEvent e)
     if(e.getActionCommand().equals("Submit"))
     {
         String plaintext = Input.getText();
-        Output.setText(ciphertext);
-    }
-    if(e.getActionCommand().equals("Atbash"))
-    {
+        if(e.getActionCommand().equals("Atbash"))
+     {
         FrameforChoice.setVisible(false);
         FrameforInput.setVisible(true);
         ciphertext = atbash(plaintext);
-    }
-    if(e.getActionCommand().equals("Caesar Shift"))
-    {
+     }
+     if(e.getActionCommand().equals("Caesar Shift"))
+     {
         buttonRemove = true;
         FrameforChoice.setVisible(false);
         InputPanel.add(KeyLabel);
@@ -123,15 +121,15 @@ public void actionPerformed(ActionEvent e)
         InputPanel.add(submitButton);
         FrameforInput.setVisible(true);
         ciphertext = caesar(plaintext, key);
-    }
-    if(e.getActionCommand().equals("ROT13"))
-    {
+     }
+     if(e.getActionCommand().equals("ROT13"))
+     {
         FrameforChoice.setVisible(false);
         FrameforInput.setVisible(true);
         ciphertext = ROT13(plaintext);
-    }
-    if(e.getActionCommand().equals("Vigenere"))
-    {
+     }
+     if(e.getActionCommand().equals("Vigenere"))
+     {
         buttonRemove = true;
         FrameforChoice.setVisible(false);
         InputPanel.add(KeyLabel);
@@ -142,9 +140,9 @@ public void actionPerformed(ActionEvent e)
         InputPanel.add(submitButton);
         FrameforInput.setVisible(true);
         ciphertext = vigenere(plaintext, Key);
-    }
-    if(e.getActionCommand().equals("Return"))
-    {
+     }
+     if(e.getActionCommand().equals("Return"))
+     {
         FrameforChoice.setVisible(true);
         FrameforInput.setVisible(false);
         Input.setText("");
@@ -155,7 +153,10 @@ public void actionPerformed(ActionEvent e)
             InputPanel.remove(KeyLabel);
             buttonRemove = false;
         }
+     }
+        Output.setText(ciphertext);
     }
+    
 
 }
 public static String ROT13(String str)
