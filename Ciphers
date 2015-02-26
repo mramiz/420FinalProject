@@ -13,6 +13,7 @@ public class Main2 {
     */
        
    {
+        ciphertext = ("");
         ArrayList ab1 = new ArrayList(); 
         str.toLowerCase();
         ab1.add('a'); 
@@ -63,6 +64,7 @@ public class Main2 {
      */
    
    {
+        ciphertext = ("");
         ArrayList ab1 = new ArrayList(); 
         str.toLowerCase();
         ab1.add('a'); 
@@ -119,6 +121,7 @@ public class Main2 {
      /*This cipher is like a Caesar shift with a standard shift of 13. 
       */    
     {
+        ciphertext = ("");
         plaintext = str;
         str.toLowerCase();
         ArrayList ab1 = new ArrayList(); 
@@ -178,6 +181,7 @@ public class Main2 {
     */
    
    {
+       ciphertext = ("");
        str.toLowerCase();
        Key.toLowerCase();
        String K = Key;
