@@ -79,7 +79,7 @@ public class GUI extends Main2 implements ActionListener
      outFieldPane.add(Output);
      FrameforInput.add(outFieldPane,BorderLayout.SOUTH); 
 
-     //Return button for FrameforInput and add an AvtionListener
+     //Return button for FrameforInput and add an ActionListener
      outFieldPane.add(Return);
      Return.addActionListener(this);
 
@@ -136,11 +136,11 @@ public class GUI extends Main2 implements ActionListener
                 {
                     FrameforChoice.setVisible(true);
                     FrameforInput.setVisible(false);
-                    Input.setText("");
-                    Output.setText("");
+                    resetOutput();
                         if (buttonRemove)
                         {
                             InputPanel.remove(Input2);
+                            InputPanel.remove(KeyLabel);   
                             buttonRemove = false;
                         }
                     }
@@ -150,6 +150,7 @@ public class GUI extends Main2 implements ActionListener
                      plaintext = Input.getText();
                      ciphertext = atbash(plaintext);
                      Output.setText(ciphertext);          
+                     plaintext = ("");
                      } 
         if (caesar == true)
            if(e.getActionCommand().equals("Submit"))
@@ -159,13 +160,15 @@ public class GUI extends Main2 implements ActionListener
                      key = Integer.parseInt(text);
                      ciphertext = caesar(plaintext, key);
                      Output.setText(ciphertext);          
+                     plaintext = ("");          
                      }
         if (rot13 == true)
            if(e.getActionCommand().equals("Submit"))
                     {
                      plaintext = Input.getText();
                      ciphertext = ROT13(plaintext);
-                     Output.setText(ciphertext);
+                     Output.setText(ciphertext);          
+                     plaintext = ("");
                     }
         if (vigenere == true)
            if(e.getActionCommand().equals("Submit"))
@@ -174,9 +177,18 @@ public class GUI extends Main2 implements ActionListener
                      text = Input2.getText();
                      Key = text;
                      ciphertext = vigenere(plaintext, Key);
-                     Output.setText(ciphertext);
+                     Output.setText(ciphertext);          
+                     plaintext = ("");
                     }
      }    
+  public void resetOutput()
+  {
+      plaintext = "";
+      ciphertext = "";
+      Input.setText("");
+      Input2.setText("");
+      Output.setText("");
+    }
   public static void main(String[] args) 
      {
         GUI GUI = new GUI();
