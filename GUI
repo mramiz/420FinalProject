@@ -6,31 +6,31 @@ import java.awt.event.ActionListener;
 import java.lang.Object;
 import javax.swing.*;
 
-public class GUI extends Main2 implements ActionListener{
-
- JFrame FrameTest = new JFrame();
- JFrame FrameforInput = new JFrame();
- JFrame FrameforChoice = new JFrame();
- JButton Atbash = new JButton("Atbash");
- JButton CaesarShift = new JButton("Caesar Shift");
- JButton ROT13 = new JButton("ROT13");
- JButton Vigenere = new JButton("Vigenere");
- JButton Return = new JButton("Return");
- JTextField Input;
- JTextField Output;
- JTextField Input2;
- private Enigma panel1;
- JPanel outFieldPane= new JPanel();
- JPanel InputPanel = new JPanel();
- JButton submitButton = new JButton("Submit");
- boolean buttonRemove;
- JLabel KeyLabel = new JLabel("Key:", SwingConstants.RIGHT);
- private static String plaintext, str, ciphertext;
- void initializeGui()
+public class GUI extends Main2 implements ActionListener
+{
+  JFrame FrameTest = new JFrame();
+  JFrame FrameforInput = new JFrame();
+  JFrame FrameforChoice = new JFrame();
+  JButton Atbash = new JButton("Atbash");
+  JButton CaesarShift = new JButton("Caesar Shift");
+  JButton ROT13 = new JButton("ROT13");
+  JButton Vigenere = new JButton("Vigenere");
+  JButton Return = new JButton("Return");
+  JTextField Input;
+  JTextField Output;
+  JTextField Input2;
+  private Enigma panel1;
+  JPanel outFieldPane= new JPanel();
+  JPanel InputPanel = new JPanel();
+  JButton submitButton = new JButton("Submit");
+  boolean buttonRemove;
+  JLabel KeyLabel = new JLabel("Key:", SwingConstants.RIGHT);
+  public static String plaintext, str, ciphertext, text;
+  void initializeGui()
    {
      buttonRemove = false;
      //Create the FrameforChoice
-     FrameforChoice.setSize(125,200);
+     FrameforChoice.setSize(1250,2000);
      FrameforChoice.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
      FrameforChoice.setLayout(new FlowLayout());
 
@@ -51,12 +51,12 @@ public class GUI extends Main2 implements ActionListener{
      ROT13.addActionListener(this);
      Vigenere.addActionListener(this);
 
-
      //Build the TextBoxes
-     Input2 = new JTextField(10);
-     Input = new JTextField(10);
-     Output = new JTextField(10);
-     Output.setEditable(false);
+     Input2 = new JTextField(250);
+     Input = new JTextField(250);
+     Input.setEditable(true);
+     Input2.setEditable(true);
+     Output = new JTextField(ciphertext,250);
 
      //Add the panel for the input
      InputPanel.setLayout(new GridLayout(1,2));
@@ -69,7 +69,6 @@ public class GUI extends Main2 implements ActionListener{
      //Add the panel for the submit data button
      submitButton.addActionListener(this);
      InputPanel.add(submitButton); 
-
      //Add the panel for the output
      outFieldPane.setLayout(new GridLayout(1,2));
      outFieldPane.add(new JLabel("Output:",SwingConstants.RIGHT));
@@ -88,21 +87,21 @@ public class GUI extends Main2 implements ActionListener{
      panel1 = new Enigma();
      panel1.setSize(1000,800);
      FrameforInput.add(panel1);
-
-     }
- public void actionPerformed(ActionEvent e)
+  } 
+  public void actionPerformed(ActionEvent e)
      { 
-       if(e.getActionCommand().equals("Atbash"))
+        if(e.getActionCommand().equals("Atbash"))
                 {
                   FrameforChoice.setVisible(false);
                   FrameforInput.setVisible(true);
                   if(e.getActionCommand().equals("Submit"))
                     {
-                     String plaintext = Input.getText();
+                     plaintext = Input.getText();
                      ciphertext = atbash(plaintext);
                      Output.setText(ciphertext);          
-                     }    
+                     } 
                 }
+        else 
         if(e.getActionCommand().equals("Caesar Shift"))
                 {
                    buttonRemove = true;
@@ -114,24 +113,26 @@ public class GUI extends Main2 implements ActionListener{
                    FrameforInput.setVisible(true);
                    if(e.getActionCommand().equals("Submit"))
                     {
-                     String plaintext = Input.getText();
-                     String text = Input2.getText();
+                     plaintext = Input.getText();
+                     text = Input2.getText();
                      key = Integer.parseInt(text);
                      ciphertext = caesar(plaintext, key);
                      Output.setText(ciphertext);          
                      }
                 }
+        else
         if(e.getActionCommand().equals("ROT13"))
                 {
                     FrameforChoice.setVisible(false);
                     FrameforInput.setVisible(true);
                     if(e.getActionCommand().equals("Submit"))
                     {
-                     String plaintext = Input.getText();
+                     plaintext = Input.getText();
                      ciphertext = ROT13(plaintext);
                      Output.setText(ciphertext);
                     }
                 }
+        else
         if(e.getActionCommand().equals("Vigenere"))
                 {
                     buttonRemove = true;
@@ -143,13 +144,14 @@ public class GUI extends Main2 implements ActionListener{
                     FrameforInput.setVisible(true);
                     if(e.getActionCommand().equals("Submit"))
                     {
-                     String plaintext = Input.getText();
-                     String text = Input2.getText();
+                     plaintext = Input.getText();
+                     text = Input2.getText();
                      Key = text;
                      ciphertext = vigenere(plaintext, Key);
                      Output.setText(ciphertext);
                     }
                 }
+        else 
         if(e.getActionCommand().equals("Return"))
                 {
                     FrameforChoice.setVisible(true);
@@ -163,10 +165,9 @@ public class GUI extends Main2 implements ActionListener{
                         }
                     }
      }
-   public static void main(String[] args) 
+  public static void main(String[] args) 
      {
         GUI GUI = new GUI();
         GUI.initializeGui();
      }
 }
-
