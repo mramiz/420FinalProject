@@ -149,8 +149,7 @@ public class GUI extends Main2 implements ActionListener
                     {
                      plaintext = Input.getText();
                      ciphertext = atbash(plaintext);
-                     Output.setText(ciphertext);          
-                     plaintext = ("");
+                     Output.setText(ciphertext);
                      } 
         if (caesar == true)
            if(e.getActionCommand().equals("Submit"))
@@ -159,16 +158,14 @@ public class GUI extends Main2 implements ActionListener
                      text = Input2.getText();
                      key = Integer.parseInt(text);
                      ciphertext = caesar(plaintext, key);
-                     Output.setText(ciphertext);          
-                     plaintext = ("");          
+                     Output.setText(ciphertext);
                      }
         if (rot13 == true)
            if(e.getActionCommand().equals("Submit"))
                     {
                      plaintext = Input.getText();
                      ciphertext = ROT13(plaintext);
-                     Output.setText(ciphertext);          
-                     plaintext = ("");
+                     Output.setText(ciphertext);
                     }
         if (vigenere == true)
            if(e.getActionCommand().equals("Submit"))
@@ -177,8 +174,7 @@ public class GUI extends Main2 implements ActionListener
                      text = Input2.getText();
                      Key = text;
                      ciphertext = vigenere(plaintext, Key);
-                     Output.setText(ciphertext);          
-                     plaintext = ("");
+                     Output.setText(ciphertext);
                     }
      }    
   public void resetOutput()
