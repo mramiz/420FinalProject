@@ -1,173 +1,277 @@
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.lang.Object;
-import javax.swing.*;
+import java.util.ArrayList;
+public class Main2 {
 
-public class GUI extends Main2 implements ActionListener
-{
-  JFrame FrameTest = new JFrame();
-  JFrame FrameforInput = new JFrame();
-  JFrame FrameforChoice = new JFrame();
-  JButton Atbash = new JButton("Atbash");
-  JButton CaesarShift = new JButton("Caesar Shift");
-  JButton ROT13 = new JButton("ROT13");
-  JButton Vigenere = new JButton("Vigenere");
-  JButton Return = new JButton("Return");
-  JTextField Input;
-  JTextField Output;
-  JTextField Input2;
-  private Enigma panel1;
-  JPanel outFieldPane= new JPanel();
-  JPanel InputPanel = new JPanel();
-  JButton submitButton = new JButton("Submit");
-  boolean buttonRemove;
-  JLabel KeyLabel = new JLabel("Key:", SwingConstants.RIGHT);
-  public static String plaintext, str, ciphertext, text;
-  void initializeGui()
+  static int key;
+  public static String plaintext, str;
+  static String ciphertext = "";
+  static int b;
+  static char c;
+  String Key; 
+   public static String atbash(String str)
+   /* This cipher is of ancient Hebrew origin where each letter is switched for one that is opposite it in the alphabet.
+    * Ex: A-->Z, B-->Y, C-->X, etc.
+    */
+       
    {
-     buttonRemove = false;
-     //Create the FrameforChoice
-     FrameforChoice.setSize(1250,2000);
-     FrameforChoice.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     FrameforChoice.setLayout(new FlowLayout());
-
-     //Create the FrameforInput
-     FrameforInput.setSize(1000,1000);
-     FrameforInput.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     FrameforInput.setLayout(new BorderLayout());
-
-     //Add buttons for the FrameforChoice
-     FrameforChoice.add(Atbash);
-     FrameforChoice.add(CaesarShift);
-     FrameforChoice.add(ROT13);
-     FrameforChoice.add(Vigenere);
-
-     //Add ActionListener to Buttons
-     Atbash.addActionListener(this);
-     CaesarShift.addActionListener(this);
-     ROT13.addActionListener(this);
-     Vigenere.addActionListener(this);
-
-     //Build the TextBoxes
-     Input2 = new JTextField(250);
-     Input = new JTextField(250);
-     Input.setEditable(true);
-     Input2.setEditable(true);
-     Output = new JTextField(ciphertext,250);
-
-     //Add the panel for the input
-     InputPanel.setLayout(new GridLayout(1,2));
-     InputPanel.add(new JLabel("Input:",SwingConstants.RIGHT));
-     InputPanel.add(Input);
-
-     Input.addActionListener(this);
-     FrameforInput.add(InputPanel,BorderLayout.NORTH);
-
-     //Add the panel for the submit data button
-     submitButton.addActionListener(this);
-     InputPanel.add(submitButton); 
-     //Add the panel for the output
-     outFieldPane.setLayout(new GridLayout(1,2));
-     outFieldPane.add(new JLabel("Output:",SwingConstants.RIGHT));
-     outFieldPane.add(Output);
-     FrameforInput.add(outFieldPane,BorderLayout.SOUTH); 
-
-     //Return button for FrameforInput and add an AvtionListener
-     outFieldPane.add(Return);
-     Return.addActionListener(this);
-
-     //Set Visibility of certain things
-     FrameforChoice.setVisible(true);
-     FrameforInput.setVisible(false);
-
-     //Adding the Enigma image
-     panel1 = new Enigma();
-     panel1.setSize(1000,800);
-     FrameforInput.add(panel1);
-  } 
-  public void actionPerformed(ActionEvent e)
-     { 
-        if(e.getActionCommand().equals("Atbash"))
-                {
-                  FrameforChoice.setVisible(false);
-                  FrameforInput.setVisible(true);
-                  if(e.getActionCommand().equals("Submit"))
+        ArrayList ab1 = new ArrayList(); 
+        str.toLowerCase();
+        ab1.add('a'); 
+        ab1.add('b'); 
+        ab1.add('c'); 
+        ab1.add('d');
+        ab1.add('e');
+        ab1.add('f');
+        ab1.add('g');
+        ab1.add('h');
+        ab1.add('i');
+        ab1.add('j');
+        ab1.add('k');
+        ab1.add('l');
+        ab1.add('m'); 
+        ab1.add('n'); 
+        ab1.add('o'); 
+        ab1.add('p'); 
+        ab1.add('q');
+        ab1.add('r');
+        ab1.add('s');
+        ab1.add('t');
+        ab1.add('u');
+        ab1.add('v');
+        ab1.add('w');
+        ab1.add('x');
+        ab1.add('y');
+        ab1.add('z'); 
+        System.out.println(ab1.size());
+        for (int i = 0; i< str.length(); i++)
+        {
+            if (str.charAt(i) == '!' || str.charAt(i)==' '|| str.charAt(i)== '.'|| str.charAt(i)== ',' ||str.charAt(i) == '?' ||str.charAt(i) ==  ';' ||str.charAt(i)== ':')
+                i++;
+            else 
+            {
+              c = str.charAt(i);
+              b = 25 - ab1.indexOf(c);//index goes from 0 to 25; 25 minus index of given char gives it's opposite pair
+              ciphertext += ab1.get(b);
+          }
+        }
+        return ciphertext;
+        }
+   public static String caesar(String str, int key)
+    /*
+     * This is the Caesar shift, made famous by Julius Caesar. 
+     * Given a numeric key, the alphabet is shifted by that number. 
+     * Ex: key = 3. A becomes E, B becomes F and so on until Z becomes D.
+     */
+   
+   {
+        ArrayList ab1 = new ArrayList(); 
+        str.toLowerCase();
+        ab1.add('a'); 
+        ab1.add('b'); 
+        ab1.add('c'); 
+        ab1.add('d');
+        ab1.add('e');
+        ab1.add('f');
+        ab1.add('g');
+        ab1.add('h');
+        ab1.add('i');
+        ab1.add('j');
+        ab1.add('k');
+        ab1.add('l');
+        ab1.add('m'); 
+        ab1.add('n'); 
+        ab1.add('o'); 
+        ab1.add('p'); 
+        ab1.add('q');
+        ab1.add('r');
+        ab1.add('s');
+        ab1.add('t');
+        ab1.add('u');
+        ab1.add('v');
+        ab1.add('w');
+        ab1.add('x');
+        ab1.add('y');
+        ab1.add('z');      
+        for (int i = 0; i< str.length(); i++)
+        {
+            if (str.charAt(i) == '!' || str.charAt(i)==' '|| str.charAt(i)== '.'|| str.charAt(i)== ',' ||str.charAt(i) == '?' ||str.charAt(i) ==  ';' ||str.charAt(i)== ':')
+                i++;
+            else 
+            if (key > 25)
+            {
+                return ("Please enter a smaller key.");
+            }
+            else 
+            {
+               c = str.charAt(i);
+               b = key + str.indexOf(c);
+                    if (key + b <= 25)
+                       ciphertext += ab1.get(b);
+                    else 
                     {
-                     plaintext = Input.getText();
-                     ciphertext = atbash(plaintext);
-                     Output.setText(ciphertext);          
-                     } 
+                        b = (key + b)-25;
+                        ciphertext += ab1.get(b);
+                    }   
+            }
+        }
+        return ciphertext;
+    }
+    public static String ROT13(String str)
+     /*This cipher is like a Caesar shift with a standard shift of 13. 
+      */    
+    {
+        plaintext = str;
+        str.toLowerCase();
+        ArrayList ab1 = new ArrayList(); 
+        ab1.add('a'); 
+        ab1.add('b'); 
+        ab1.add('c'); 
+        ab1.add('d');
+        ab1.add('e');
+        ab1.add('f');
+        ab1.add('g');
+        ab1.add('h');
+        ab1.add('i');
+        ab1.add('j');
+        ab1.add('k');
+        ab1.add('l');
+        ab1.add('m'); 
+        ArrayList ab2 = new ArrayList(); 
+        ab2.add('n'); 
+        ab2.add('o'); 
+        ab2.add('p'); 
+        ab2.add('q');
+        ab2.add('r');
+        ab2.add('s');
+        ab2.add('t');
+        ab2.add('u');
+        ab2.add('v');
+        ab2.add('w');
+        ab2.add('x');
+        ab2.add('y');
+        ab2.add('z'); 
+        for (int i = 0; i< str.length(); i++)
+        {
+            if (str.charAt(i) == '!' || str.charAt(i)==' '|| str.charAt(i)== '.'|| str.charAt(i)== ',' ||str.charAt(i) == '?' ||str.charAt(i) ==  ';' ||str.charAt(i)== ':')
+                i++;
+            else 
+            if(ab1.contains(str.charAt(i)))
+            {
+               c = str.charAt(i);
+               b = ab1.indexOf(c);
+               ciphertext += ab2.get(b);
+              }
+            else 
+            if(ab2.contains(str.charAt(i))){
+               c = str.charAt(i);
+               b = ab1.indexOf(c);
+               ciphertext += ab1.get(b);
+            }
+        }
+        return ciphertext;
+   }
+   public static String vigenere(String str, String Key)
+   /*
+    * A Vigenere Cipher was considered indecipherable for about 200 years. It is polyalphabetic and the best type of key (a string) is one as long as the plaintext.
+    * If it is not, then the key is repeated in length (excluding spaces and punctuation) to match in chars the text.
+    * Then, essentially a system of Caesar shifts is made; the plaintext letter is found in the shifted key alphabet, and it's index is applied to the shifted text input.
+    * Then the output is appended to the ciphertext.
+    */
+   
+   {
+       str.toLowerCase();
+       Key.toLowerCase();
+       String K = Key;
+       ArrayList ab1 = new ArrayList(); 
+        ab1.add('a'); 
+        ab1.add('b'); 
+        ab1.add('c'); 
+        ab1.add('d');
+        ab1.add('e');
+        ab1.add('f');
+        ab1.add('g');
+        ab1.add('h');
+        ab1.add('i');
+        ab1.add('j');
+        ab1.add('k');
+        ab1.add('l');
+        ab1.add('m'); 
+        ab1.add('n'); 
+        ab1.add('o'); 
+        ab1.add('p'); 
+        ab1.add('q');
+        ab1.add('r');
+        ab1.add('s');
+        ab1.add('t');
+        ab1.add('u');
+        ab1.add('v');
+        ab1.add('w');
+        ab1.add('x');
+        ab1.add('y');
+        ab1.add('z');
+        ArrayList ab2 = new ArrayList(); 
+        ArrayList ab3 = new ArrayList();
+        ArrayList k = new ArrayList();
+        for (int m = 0; m < Key.length(); m++)
+        {
+            k.add(Key.charAt(m)); 
+        }
+        int kk = k.size();
+        for (int d = 0; d < str.length(); d++)
+        {
+          if (str.charAt(d) == '!' || str.charAt(d)==' '|| str.charAt(d)== '.'|| str.charAt(d)== ',' ||str.charAt(d) == '?' ||str.charAt(d) ==  ';' ||str.charAt(d)== ':')
+                d++;
+          else{ 
+             if (d == k.size())
+             { 
+                int f = d - kk;
+                k.add(k.get(f));
+             }
+          }
+        }
+        for(int i = 0; i< k.size(); i++)//makes the key alphabet
+        {
+              b = ab1.indexOf(k.get(i));
+              for (int j = 0; j < 26; j++)
+              {     
+                if (b + j < 26)
+                {
+                    ab2.add(ab1.get((b + j)));
                 }
-        else 
-        if(e.getActionCommand().equals("Caesar Shift"))
-                {
-                   buttonRemove = true;
-                   FrameforChoice.setVisible(false);
-                   InputPanel.add(KeyLabel);
-                   InputPanel.add(Input2);
-                   InputPanel.remove(submitButton);
-                   InputPanel.add(submitButton);
-                   FrameforInput.setVisible(true);
-                   if(e.getActionCommand().equals("Submit"))
-                    {
-                     plaintext = Input.getText();
-                     text = Input2.getText();
-                     key = Integer.parseInt(text);
-                     ciphertext = caesar(plaintext, key);
-                     Output.setText(ciphertext);          
-                     }
-                }
-        else
-        if(e.getActionCommand().equals("ROT13"))
-                {
-                    FrameforChoice.setVisible(false);
-                    FrameforInput.setVisible(true);
-                    if(e.getActionCommand().equals("Submit"))
-                    {
-                     plaintext = Input.getText();
-                     ciphertext = ROT13(plaintext);
-                     Output.setText(ciphertext);
+                else
+                //if (b + j >= 26) 
+                   {
+                    for (int n = 0 ; n < b; n++)
+                      { ab2.add(ab1.get((n)));
+                      } 
+                    break;
                     }
-                }
-        else
-        if(e.getActionCommand().equals("Vigenere"))
+                }//ab2 is now a shifted alphabet
+              
+              int p = ab1.indexOf(str.charAt(i));
+              for (int g = 0; g < 26; g++)
                 {
-                    buttonRemove = true;
-                    FrameforChoice.setVisible(false);
-                    InputPanel.add(KeyLabel);
-                    InputPanel.add(Input2);
-                    InputPanel.remove(submitButton);
-                    InputPanel.add(submitButton);
-                    FrameforInput.setVisible(true);
-                    if(e.getActionCommand().equals("Submit"))
+                   if (str.charAt(i) == '!' || str.charAt(i)==' '|| str.charAt(i)== '.'|| str.charAt(i)== ',' ||str.charAt(i) == '?' ||str.charAt(i) ==  ';' ||str.charAt(i)== ':')
+                     i++;
+                   else 
+                      {
+                    if ((p + g) < 26)
                     {
-                     plaintext = Input.getText();
-                     text = Input2.getText();
-                     Key = text;
-                     ciphertext = vigenere(plaintext, Key);
-                     Output.setText(ciphertext);
-                    }
-                }
-        else 
-        if(e.getActionCommand().equals("Return"))
-                {
-                    FrameforChoice.setVisible(true);
-                    FrameforInput.setVisible(false);
-                    Input.setText("");
-                    Output.setText("");
-                        if (buttonRemove)
+                        ab3.add(ab1.get((p + g)));
+                      }
+                    else
+                    
+                    //if (p + g >= 26) 
+                    {
+                        for (int x = 0 ; x < p; x++)
                         {
-                            InputPanel.remove(Input2);
-                            buttonRemove = false;
+                          ab3.add(ab1.get((x)));
                         }
+                        break;
                     }
-     }
-  public static void main(String[] args) 
-     {
-        GUI GUI = new GUI();
-        GUI.initializeGui();
-     }
+                   }
+                 }
+              ciphertext += ab3.get(ab2.indexOf(str.charAt(i))); 
+         }  
+       return ciphertext;    
+    }     
 }
