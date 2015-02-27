@@ -16,7 +16,7 @@ public class Main2 {
         ciphertext = ("");
         ArrayList ab1 = new ArrayList(); 
         plaintext = str;
-        str.toLowerCase();
+        str = str.toLowerCase();
         ab1.add('a'); 
         ab1.add('b'); 
         ab1.add('c'); 
@@ -43,7 +43,6 @@ public class Main2 {
         ab1.add('x');
         ab1.add('y');
         ab1.add('z'); 
-        System.out.println(ab1.size());
         for (int i = 0; i< str.length(); i++)
         {
             if (str.charAt(i) == '!' || str.charAt(i)==' '|| str.charAt(i)== '.'|| str.charAt(i)== ',' ||str.charAt(i) == '?' ||str.charAt(i) ==  ';' ||str.charAt(i)== ':')
@@ -68,7 +67,7 @@ public class Main2 {
         ciphertext = ("");
         ArrayList ab1 = new ArrayList(); 
         plaintext = str;
-        str.toLowerCase();
+        str = str.toLowerCase();
         ab1.add('a'); 
         ab1.add('b'); 
         ab1.add('c'); 
@@ -125,7 +124,7 @@ public class Main2 {
     {
         ciphertext = ("");
         plaintext = str;
-        str.toLowerCase();
+        str = str.toLowerCase();
         ArrayList ab1 = new ArrayList(); 
         ab1.add('a'); 
         ab1.add('b'); 
@@ -185,7 +184,7 @@ public class Main2 {
    {
        ciphertext = ("");
        plaintext = str;
-       str.toLowerCase();
+       str = str.toLowerCase();
        Key.toLowerCase();
        String K = Key;
        ArrayList ab1 = new ArrayList(); 
@@ -220,14 +219,15 @@ public class Main2 {
         ArrayList k = new ArrayList();
         for (int m = 0; m < Key.length(); m++)
         {
-            k.add(Key.charAt(m)); 
+            k.add(Key.charAt(m));
         }
         int kk = k.size();
         for (int d = 0; d < str.length(); d++)
         {
-          if (str.charAt(d) == '!' || str.charAt(d)==' '|| str.charAt(d)== '.'|| str.charAt(d)== ',' ||str.charAt(d) == '?' ||str.charAt(d) ==  ';' ||str.charAt(d)== ':')
+            if (str.charAt(d) == '!' || str.charAt(d)==' '|| str.charAt(d)== '.'|| str.charAt(d)== ',' ||str.charAt(d) == '?' ||str.charAt(d) ==  ';' ||str.charAt(d)== ':')
                 d++;
-          else{ 
+
+           else{ 
              if (d == k.size())
              { 
                 int f = d - kk;
